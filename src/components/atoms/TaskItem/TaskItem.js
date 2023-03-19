@@ -5,7 +5,7 @@ const TaskItem = (props) => (
    <li>
       {props.task}
       <button onClick={() => props.deleteTask(props.i)}>X</button>
-      {console.log(props.i)}
+      {/* {console.log(props.i)} */}
    </li>
 );
 
