@@ -11,10 +11,20 @@ const MainTemplate = () => {
    const handleChangeInputValue = (e) => {
       setInputValue(e.target.value);
    };
+
    const handleAddTask = (e) => {
       setErrorValue("");
       e.preventDefault();
-      !!inputValue ? setTasks([...tasks, inputValue]) : setErrorValue("Wpisz co najmniej 2 znaki jako task!");
+      !!tasks.some((e) => e === inputValue)
+         ? setErrorValue("Taki Task już istnieje. Zmień nazwę Taska!")
+         : (console.log("alles ok"), !!inputValue ? setTasks([...tasks, inputValue]) : setErrorValue("Wpisz co najmniej 2 znaki jako task!"));
+
+      // if (!!tasks.some((e) => e === inputValue)) {
+      //    setErrorValue("Taki Task już istnieje. Zmień nazwę Taska!");
+      // } else {
+      //    console.log("alles ok");
+      //    !!inputValue ? setTasks([...tasks, inputValue]) : setErrorValue("Wpisz co najmniej 2 znaki jako task!");
+      // }
       setInputValue("");
    };
 
