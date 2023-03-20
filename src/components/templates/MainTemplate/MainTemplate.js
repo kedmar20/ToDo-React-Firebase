@@ -18,13 +18,6 @@ const MainTemplate = () => {
       !!tasks.some((e) => e === inputValue)
          ? setErrorValue("Taki Task już istnieje. Zmień nazwę Taska!")
          : (console.log("alles ok"), !!inputValue ? setTasks([...tasks, inputValue]) : setErrorValue("Wpisz co najmniej 2 znaki jako task!"));
-
-      // if (!!tasks.some((e) => e === inputValue)) {
-      //    setErrorValue("Taki Task już istnieje. Zmień nazwę Taska!");
-      // } else {
-      //    console.log("alles ok");
-      //    !!inputValue ? setTasks([...tasks, inputValue]) : setErrorValue("Wpisz co najmniej 2 znaki jako task!");
-      // }
       setInputValue("");
    };
 
