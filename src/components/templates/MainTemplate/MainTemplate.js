@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import FormInput from "components/organisms/FormInput/FormInput";
 import Title from "components/atoms/Title/Title";
 import TaskList from "components/molecules/TasksList/TaskList";
@@ -31,6 +31,8 @@ const reducer = (state, action) => {
             ...state,
             tasks: action.tasksAfterDelete,
          };
+      case "CLEAR ERROR":
+         return { error: action.text };
       default:
          return state;
    }
@@ -38,6 +40,7 @@ const reducer = (state, action) => {
 
 const MainTemplate = () => {
    const [tasksValues, dispatch] = useReducer(reducer, initialValues);
+   let { inputValue, tasks, error } = tasksValues;
 
    const handleChangeInputValue = (e) => {
       dispatch({
@@ -47,33 +50,35 @@ const MainTemplate = () => {
    };
 
    const handleAddTask = (e) => {
-      tasksValues.error = "";
+      // error = "";
+      dispatch({ type: "THROW ERROR", text: "" });
       e.preventDefault();
-      !!tasksValues.tasks.some((e) => e === tasksValues.inputValue)
+      !!tasks.some((e) => e === inputValue)
          ? dispatch({ type: "THROW ERROR", text: "Ein solcher Task existiert bereits. Task umbenennen, bitte!" })
          : (console.log("alles ok"),
-           !!tasksValues.inputValue
+           !!inputValue
               ? dispatch({
                    type: "ADD TASKS",
-                   add: [...tasksValues.tasks, tasksValues.inputValue],
+                   add: [...tasks, inputValue],
                 })
               : dispatch({ type: "THROW ERROR", text: "Bitte geben Sie mindestens 2 Zeichen für Task ein!" }));
 
-      tasksValues.inputValue = "";
+      // inputValue = "";
+      dispatch({ type: "INPUT CHANGE", value: "" });
    };
 
    const deleteTask = (key) => {
       dispatch({
          type: "FILTERED TASKS",
-         tasksAfterDelete: tasksValues.tasks.filter((e, i) => i !== key),
+         tasksAfterDelete: tasks.filter((e, i) => i !== key),
       });
    };
    return (
       <>
          <Title />
-         <FormInput handleAddTask={handleAddTask} inputValue={tasksValues.inputValue} handleChangeInputValue={handleChangeInputValue} />
-         {!!tasksValues.error ? <p>{tasksValues.error}</p> : ""}
-         <TaskList tasks={tasksValues.tasks} deleteTask={deleteTask} />
+         <FormInput handleAddTask={handleAddTask} inputValue={inputValue} handleChangeInputValue={handleChangeInputValue} />
+         {!!error ? <p>{error}</p> : ""}
+         <TaskList tasks={tasks} deleteTask={deleteTask} />
       </>
    );
 };
