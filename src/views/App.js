@@ -1,9 +1,15 @@
-import logo from "assets/logo.svg";
 import MainTemplate from "components/templates/MainTemplate/MainTemplate";
-import "views/App.css";
+import { GlobalStyle } from "assets/styles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import { theme } from "assets/styles/theme";
 
 function App() {
-   return <MainTemplate />;
+   return (
+      <ThemeProvider theme={theme}>
+         <GlobalStyle />
+         <MainTemplate />
+      </ThemeProvider>
+   );
 }
 
 export default App;

@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { TitleWrapper } from "./Title.styles";
 
-const Title = () => <h1>Deine Tasks (Aufgaben) für Heute:</h1>;
+const Title = () => <TitleWrapper>Deine Tasks (Aufgaben) für Heute:</TitleWrapper>;
 
 // Title.PropTypes = {};
 
