@@ -18,4 +18,10 @@ export const MainTemplateWrapper = styled.div`
       margin-bottom: 3vh;
       padding: 0.5rem 1.5rem;
    }
+
+   h2 {
+      font-size: 2.5rem;
+      font-weight: 400;
+      margin: 15px 0 0 0;
+   }
 `;
