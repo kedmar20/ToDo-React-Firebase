@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { TaskItemWrapper } from "./TaskItem.styles";
+import { Button } from "../Button/Button";
 
 const TaskItem = (props) => (
    <TaskItemWrapper>
       {props.task}
       <div>
-         <button onClick={() => props.deleteTask(props.i)}>DELETE</button>
-         <button>EDIT</button>
+         <Button onClick={() => props.deleteTask(props.i)}>DELETE</Button>
+         <Button>EDIT</Button>
       </div>
       {/* {console.log(props.i)} */}
    </TaskItemWrapper>

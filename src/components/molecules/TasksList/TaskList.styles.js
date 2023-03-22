@@ -6,4 +6,5 @@ export const TaskListWrapper = styled.ul`
    font-weight: 200;
    list-style: square;
    margin: 8px;
+   max-width: 90vw;
 `;

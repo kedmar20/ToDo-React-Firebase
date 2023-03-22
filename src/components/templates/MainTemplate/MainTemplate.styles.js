@@ -6,8 +6,9 @@ export const MainTemplateWrapper = styled.div`
    color: ${({ theme }) => theme.colors.fonts1};
    display: flex;
    flex-direction: column;
-   height: 100vh;
+   min-height: 100vh;
    justify-content: center;
+   padding: 50px 25px 50px 25px;
 
    p:nth-child(n) {
       font-size: 2rem;
@@ -22,6 +23,6 @@ export const MainTemplateWrapper = styled.div`
    h2 {
       font-size: 2.5rem;
       font-weight: 400;
-      margin: 15px 0 0 0;
+      margin: 55px 0 20px 0;
    }
 `;
