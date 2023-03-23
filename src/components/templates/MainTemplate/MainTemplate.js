@@ -4,10 +4,12 @@ import Title from "components/atoms/Title/Title";
 import TaskList from "components/molecules/TasksList/TaskList";
 import { useHandlers } from "hooks/useHandlers";
 import { MainTemplateWrapper } from "./MainTemplate.styles";
-import { TitleWrapper } from "components/atoms/Title/Title.styles";
-
+import PropTypes from "prop-types";
+//
+//
 const MainTemplate = () => {
    const { handleAddTask, tasksValues, handleChangeInputValue, handleDeleteTask } = useHandlers();
+
    return (
       <MainTemplateWrapper>
          <Title />
@@ -17,6 +19,13 @@ const MainTemplate = () => {
          <TaskList tasks={tasksValues.tasks} deleteTask={handleDeleteTask} />
       </MainTemplateWrapper>
    );
+};
+
+MainTemplate.propTypes = {
+   handleAddTask: PropTypes.func,
+   tasksValues: PropTypes.string,
+   handleChangeInputValue: PropTypes.func,
+   handleDeleteTask: PropTypes.func,
 };
 
 export default MainTemplate;
