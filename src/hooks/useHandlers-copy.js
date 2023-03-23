@@ -35,7 +35,7 @@ const reducer = (state, action) => {
 
 export const useHandlers = () => {
    const [tasksValues, dispatch] = useReducer(reducer, initialValues);
-   let { inputValue, tasks } = tasksValues; //autorski pomysł destrukturyzacji tych dwóch zmiennych stanów w tym pliku
+   let { inputValue, tasks, error } = tasksValues;
 
    const handleChangeInputValue = (e) => {
       dispatch({
@@ -51,7 +51,7 @@ export const useHandlers = () => {
    const clearInputValue = () => {
       dispatch({
          type: "INPUT CHANGE",
-         value: "",
+         value: initialValues.inputValue,
       });
    };
 
@@ -78,8 +78,10 @@ export const useHandlers = () => {
    };
    return {
       handleAddTask,
+      inputValue,
       handleChangeInputValue,
+      error,
+      tasks,
       handleDeleteTask,
-      tasksValues,
    };
 };
