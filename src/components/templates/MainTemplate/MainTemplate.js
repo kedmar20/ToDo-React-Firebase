@@ -7,14 +7,14 @@ import { MainTemplateWrapper } from "./MainTemplate.styles";
 import { TitleWrapper } from "components/atoms/Title/Title.styles";
 
 const MainTemplate = () => {
-   const { handleAddTask, inputValue, handleChangeInputValue, error, tasks, handleDeleteTask } = useHandlers();
+   const { handleAddTask, tasksValues, handleChangeInputValue, handleDeleteTask } = useHandlers();
    return (
       <MainTemplateWrapper>
          <Title />
-         <FormInput handleAddTask={handleAddTask} inputValue={inputValue} handleChangeInputValue={handleChangeInputValue} />
-         {!!error ? <p>{error}</p> : ""}
-         {!(tasks.length === 0) ? <h2>Aufgabenliste:</h2> : null}
-         <TaskList tasks={tasks} deleteTask={handleDeleteTask} />
+         <FormInput handleAddTask={handleAddTask} inputValue={tasksValues.inputValue} handleChangeInputValue={handleChangeInputValue} />
+         {!!tasksValues.error ? <p>{tasksValues.error}</p> : ""}
+         {!(tasksValues.tasks.length === 0) ? <h2>Aufgabenliste:</h2> : null}
+         <TaskList tasks={tasksValues.tasks} deleteTask={handleDeleteTask} />
       </MainTemplateWrapper>
    );
 };
