@@ -15,6 +15,9 @@ const TaskList = ({ tasks, deleteTask }) => {
    );
 };
 
-// TaskList.PropTypes = {};
+TaskList.propTypes = {
+   tasks: PropTypes.arrayOf(PropTypes.any),
+   deleteTask: PropTypes.func,
+};
 
 export default TaskList;

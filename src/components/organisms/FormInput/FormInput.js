@@ -16,6 +16,10 @@ const FormInput = ({ handleAddTask, handleChangeInputValue, inputValue }) => {
    );
 };
 
-// FormInput.PropTypes = {};
+FormInput.propTypes = {
+   handleAddTask: PropTypes.func,
+   inputValue: PropTypes.string,
+   handleChangeInputValue: PropTypes.func,
+};
 
 export default FormInput;
