@@ -10,16 +10,6 @@ export const MainTemplateWrapper = styled.div`
    justify-content: center;
    padding: 50px 25px 50px 25px;
 
-   p:nth-child(n) {
-      font-size: 2rem;
-      color: red;
-      background-color: ${({ theme }) => theme.colors.white};
-      border: 3px solid red;
-      border-radius: 25px;
-      margin-bottom: 3vh;
-      padding: 0.5rem 1.5rem;
-   }
-
    h2 {
       font-size: 2.5rem;
       font-weight: 400;
