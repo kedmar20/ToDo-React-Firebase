@@ -1,5 +1,4 @@
-import { useReducer, useContext } from "react";
-import { TasksContext } from "providers/TasksProviders";
+import { useReducer } from "react";
 
 const initialValues = {
    inputValue: "",
@@ -35,7 +34,6 @@ const reducer = (state, action) => {
 };
 
 export const useHandlers = () => {
-   const context = useContext(TasksContext);
    const [tasksValues, dispatch] = useReducer(reducer, initialValues);
    let { inputValue, tasks } = tasksValues; //autorski pomysł destrukturyzacji tych dwóch zmiennych stanów w tym pliku
 

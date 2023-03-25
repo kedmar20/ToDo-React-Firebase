@@ -5,7 +5,6 @@ import { theme } from "assets/styles/theme";
 import EditView from "./EditView/EditView";
 import MainView from "./MainView/MainView";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import TasksProviders from "providers/TasksProviders";
 
 function App() {
    return (
@@ -13,12 +12,10 @@ function App() {
          <ThemeProvider theme={theme}>
             <GlobalStyle />
             <MainTemplate>
-               <TasksProviders>
-                  <Routes>
-                     <Route path="edit-view" element={<EditView />}></Route>
-                     <Route path="/" exact element={<MainView />}></Route>
-                  </Routes>
-               </TasksProviders>
+               <Routes>
+                  <Route path="edit-view" element={<EditView />}></Route>
+                  <Route path="/" exact element={<MainView />}></Route>
+               </Routes>
             </MainTemplate>
          </ThemeProvider>
       </Router>

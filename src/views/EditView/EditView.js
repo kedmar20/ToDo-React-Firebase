@@ -13,12 +13,12 @@ export const handleEdit = (e, i, t) => {
 };
 
 const EditView = () => {
-   const { handleDeleteTask, tasksValues } = useHandlers();
+   const { handleDeleteTask } = useHandlers();
+
    useEffect(() => {
       handleDeleteTask(key);
    }, []);
 
-   console.log(tasksValues);
    console.log(tasks); // tu jesteś !!! wyśweitla się PRAWIDŁOWO ILOŚĆ TASKÓW
    //TERAZ MUSISZ TUTAJ NOWĄ FUNKCJĘ DELETUJĄCO-FILTRUJĄCĄ ZROBIĆ I WYŚWIETLIĆ INPUT I
    //POTEM NOWĄ LISTĘ WYŚWIETLIĆ; EH KUPA ROBOTY JESZCZE
