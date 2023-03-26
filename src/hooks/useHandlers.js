@@ -36,7 +36,7 @@ const reducer = (state, action) => {
 export const useHandlers = () => {
    const [tasksValues, dispatch] = useReducer(reducer, initialValues);
    let { inputValue, tasks } = tasksValues; //autorski pomysł destrukturyzacji tych dwóch zmiennych stanów w tym pliku
-
+   console.log(tasks);
    const handleChangeInputValue = (e) => {
       dispatch({
          type: "INPUT CHANGE",
@@ -76,10 +76,21 @@ export const useHandlers = () => {
          tasksAfterDelete: tasks.filter((e, i) => i !== key),
       });
    };
+
+   const handleEditTask = (tasksList, task) => {
+      // tasksList.preventDefault();
+      console.log(tasksList);
+      // dispatch({
+      //    type: "ADD TASKS",
+      //    add: [...tasks, "fsfsddfsdfs"],
+      // });
+      initialValues.tasks = [...tasksList, task];
+   };
    return {
       handleAddTask,
       handleChangeInputValue,
       handleDeleteTask,
       tasksValues,
+      handleEditTask,
    };
 };
