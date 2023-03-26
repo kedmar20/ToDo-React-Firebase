@@ -1,41 +1,49 @@
-import React, { useEffect } from "react";
-import { useHandlers } from "hooks/useHandlers";
-import MainView from "views/MainView/MainView";
+import React, { useState } from "react";
 import Input from "components/atoms/Input/Input";
 import { Button } from "components/atoms/Button/Button";
-import FormInput from "components/organisms/FormInput/FormInput";
-import TaskList from "components/molecules/TasksList/TaskList";
+import { NavLink } from "react-router-dom";
+import { useHandlers } from "hooks/useHandlers";
+import { TaskItemWrapper } from "components/atoms/TaskItem/TaskItem.styles";
+import { TaskListWrapper } from "components/molecules/TasksList/TaskList.styles";
+import { FormInputWrapper } from "components/organisms/FormInput/FormInputWrapper.styles";
+import MainView from "views/MainView/MainView";
 
-let task;
-let key;
-let tasks;
-export const handleEdit = (e, i, t) => {
-   console.log(i);
-   task = e;
-   key = i;
-   tasks = t;
+const initialValues = {
+   inputValue: "",
+   tasks: [],
+   editedTask: "",
+   key: "",
+};
+export const handleEdit = (task, index, tasks) => {
+   initialValues.editedTask = task;
+   initialValues.key = index;
+   initialValues.tasks = tasks.filter((tasks, ind) => ind !== index);
 };
 
 const EditView = () => {
-   const { handleDeleteTask, handleAddTask, tasksValues, handleChangeInputValue } = useHandlers();
+   const [tasksValues, setTasksValues] = useState(initialValues);
+   const { handleEditTask } = useHandlers();
 
-   useEffect(() => {
-      handleDeleteTask(key);
-   }, []);
-
-   console.log(key);
-   console.log(tasks);
-   console.log(tasks[key]);
-   console.log(tasksValues);
+   if (tasksValues.tasks.length === 0) {
+      return (
+         <NavLink to="/">
+            <MainView />
+         </NavLink>
+      );
+   }
 
    return (
-      <>
-         <TaskList tasks={tasks}>{task}</TaskList>
-         {/* <Input onChange={handleChangeInputValue} value={tasksValues.inputValue} placeholder="schreibe hier neue Aufgabe..."></Input> */}
-         <Input value={tasks[key]} placeholder="schreibe hier neue Aufgabe..."></Input>
-         <Button type="submit">add new task</Button>
-         <FormInput></FormInput>
-      </>
+      <FormInputWrapper>
+         <TaskListWrapper>
+            {tasksValues.tasks.map((task, i) => {
+               return <TaskItemWrapper key={i}>{task}</TaskItemWrapper>;
+            })}
+         </TaskListWrapper>
+         <Input value={tasksValues.editedTask} onChange={(e) => setTasksValues({ ...tasksValues, editedTask: e.target.value })}></Input>
+         <NavLink to="/">
+            <Button onClick={() => handleEditTask(tasksValues.tasks, tasksValues.editedTask)}>Änderungen bestätigen</Button>
+         </NavLink>
+      </FormInputWrapper>
    );
 };
 
