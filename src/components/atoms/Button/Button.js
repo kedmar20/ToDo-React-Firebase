@@ -8,7 +8,8 @@ export const Button = styled.button`
    cursor: pointer;
    font-size: 1.25vw;
    font-weight: 200;
-   height: 4vw;
+   height: ${(props) => (props.editView ? "6vw" : "4vw")};
+   /* height: ${false ? "4vw" : "7vw"}; */
    padding: 1vw 1vw 1.2vw 1vw;
    transition: all 0.8s;
    width: 12vw;
