@@ -7,7 +7,7 @@ import Input from "components/atoms/Input/Input";
 const FormInput = ({ handleAddTask, handleChangeInputValue, inputValue }) => {
    return (
       <FormInputWrapper onSubmit={handleAddTask}>
-         <Input onChange={handleChangeInputValue} value={inputValue} placeholder="schreibe hier neue Aufgabe..."></Input>
+         <Input autoFocus={true} onChange={handleChangeInputValue} value={inputValue} placeholder="schreibe hier neue Aufgabe..."></Input>
          <Button type="submit">add new task</Button>
          {/* <input type="submit" value="add new task"></input> // beide funktioniert
           */}
