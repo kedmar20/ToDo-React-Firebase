@@ -11,6 +11,7 @@ const Input = styled.input`
    outline: none;
    padding: 1rem 2rem 1rem 2rem;
    width: 40vw;
+   margin-top: ${(props) => (props.editView ? "3vw" : "0")};
 
    ::placeholder {
       color: ${({ theme }) => theme.colors.grey1};

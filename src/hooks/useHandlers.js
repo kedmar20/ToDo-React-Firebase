@@ -79,9 +79,6 @@ export const useHandlers = () => {
 
    const handleEditTask = (tasksList, task, key) => {
       // tasksList.preventDefault();
-      console.log(tasksList);
-      console.log(task);
-      console.log(key);
       // dispatch({
       //    type: "ADD TASKS",
       //    add: [...tasks, "fsfsddfsdfs"],

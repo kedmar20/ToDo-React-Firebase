@@ -39,7 +39,6 @@ const EditView = () => {
          <TitleWrapper>Bearbeiten Sie die Aufgabe:</TitleWrapper>
          <TaskListWrapper>
             {tasksValues.tasks.map((task, i) => {
-               console.log(tasksValues.tasks[tasksValues.key]);
                if (tasksValues.key === i) {
                   return (
                      <FormInputWrapper>
@@ -47,9 +46,13 @@ const EditView = () => {
                            autoFocus={true}
                            value={tasksValues.editedTask}
                            onChange={(e) => setTasksValues({ ...tasksValues, editedTask: e.target.value })}
+                           editView={tasksValues.editedTask.length}
                         ></Input>
                         <NavLink to="/">
-                           <Button onClick={() => handleEditTask(tasksValues.tasks, tasksValues.editedTask, tasksValues.key)}>
+                           <Button
+                              onClick={() => handleEditTask(tasksValues.tasks, tasksValues.editedTask, tasksValues.key)}
+                              editView={tasksValues.editedTask.length}
+                           >
                               Änderungen bestätigen
                            </Button>
                         </NavLink>
