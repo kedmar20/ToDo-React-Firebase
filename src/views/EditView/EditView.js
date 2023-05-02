@@ -20,6 +20,7 @@ export const handleEdit = (task, index, tasks) => {
    initialValues.key = index;
    // initialValues.tasks = tasks.filter((tasks, ind) => ind !== index);
    initialValues.tasks = tasks;
+   console.log(task, index, tasks);
 };
 
 const EditView = () => {
@@ -38,10 +39,10 @@ const EditView = () => {
       <FormInputWrapper>
          <TitleWrapper>Bearbeiten Sie die Aufgabe:</TitleWrapper>
          <TaskListWrapper>
-            {tasksValues.tasks.map((task, i) => {
-               if (tasksValues.key === i) {
+            {tasksValues.tasks.map((task) => {
+               if (tasksValues.key === task.id) {
                   return (
-                     <FormInputWrapper>
+                     <FormInputWrapper key={task.id}>
                         <Input
                            autoFocus={true}
                            value={tasksValues.editedTask}
@@ -49,17 +50,14 @@ const EditView = () => {
                            editView={tasksValues.editedTask.length}
                         ></Input>
                         <NavLink to="/">
-                           <Button
-                              onClick={() => handleEditTask(tasksValues.tasks, tasksValues.editedTask, tasksValues.key)}
-                              editView={tasksValues.editedTask.length}
-                           >
+                           <Button onClick={() => handleEditTask(tasksValues.editedTask, tasksValues.key)} editView={tasksValues.editedTask.length}>
                               Änderungen bestätigen
                            </Button>
                         </NavLink>
                      </FormInputWrapper>
                   );
                } else {
-                  return <TaskItemWrapper key={i}>{task}</TaskItemWrapper>;
+                  return <TaskItemWrapper key={task.id}>{task.title}</TaskItemWrapper>;
                }
             })}
          </TaskListWrapper>
