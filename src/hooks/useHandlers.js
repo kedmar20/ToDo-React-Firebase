@@ -79,6 +79,7 @@ export const useHandlers = () => {
    const handleAddTask = async (e) => {
       throwError("");
       e.preventDefault();
+      /*eslint-disable no-unused-expressions*/
       !!tasks.some((e) => e === inputValue)
          ? /*eslint no-unused-expressions: ["error", { "allowTernary": true }]*/
            throwError("Ein solcher Task existiert bereits. Task umbenennen, bitte!")
