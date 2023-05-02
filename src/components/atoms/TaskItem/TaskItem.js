@@ -10,6 +10,7 @@ const TaskItem = (props) => {
          {props.task}
          <div>
             <Button onClick={() => props.deleteTask(props.i)}>DELETE</Button>
+            {console.log(props)}
             <NavLink to="/edit-view">
                <Button onClick={() => handleEdit(props.task, props.i, props.tasks)}>EDIT</Button>
             </NavLink>

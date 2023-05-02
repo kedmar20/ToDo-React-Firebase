@@ -7,8 +7,8 @@ const TaskList = ({ tasks, deleteTask }) => {
    return (
       <>
          <TaskListWrapper>
-            {tasks.map((task, i) => (
-               <TaskItem key={i} task={task} deleteTask={deleteTask} i={i} tasks={tasks} />
+            {tasks.map((task) => (
+               <TaskItem key={task.id} task={task.title} deleteTask={deleteTask} i={task.id} tasks={tasks} />
             ))}
          </TaskListWrapper>
       </>
