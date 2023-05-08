@@ -1,10 +1,13 @@
-### deploy on Firebase:
-
+### deploy and database on Firebase:
 ### https://reactfirebase-todolist.web.app/
 
-### React + CreateReactApp
+# React + CreateReactApp
+- this is second version of my ToDoList (first version in VanillaJS is here: https://github.com/kedmar20/ownServer-Express-ToDoList )
+- you can add, edit or delete tasks
+<br>
+<br>
 
-# Getting Started with Create React App
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
